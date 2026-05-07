@@ -64,5 +64,5 @@ return redirect('/todo');
 
 Route::view('/about', 'about');
 Route::view('/contact', 'contact');
-
+//todayes practice CURD oparations shortway
 Route::resource('/infos', InfoController::class);
