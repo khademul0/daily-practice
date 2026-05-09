@@ -17,9 +17,13 @@
         <a href="/about">about</a>
         <a href="/contact">contact</a>
         <a href="/todo">todo</a>
+        <div class="float-end">
+            <a class="btn" href="/register">register</a>
+        </div>
     </nav>
+
     <main>
-    {{$slot}}
+        {{$slot}}
     </main>
     <!-- Footer -->
     <footer class="bg-dark text-white text-center py-3 mt-auto">

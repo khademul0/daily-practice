@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\InfoController;
+use App\Http\Controllers\RegisterController;
+use GuzzleHttp\Promise\Create;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +22,7 @@ use App\Http\Controllers\InfoController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 
 });
 
@@ -66,3 +68,6 @@ Route::view('/about', 'about');
 Route::view('/contact', 'contact');
 //todayes practice CURD oparations shortway
 Route::resource('/infos', InfoController::class);
+
+Route::get('/register',[RegisterController::class,'create']);
+Route::post('/register',[RegisterController::class,'store']);
