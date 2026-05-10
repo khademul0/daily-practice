@@ -17,9 +17,22 @@
         <a href="/about">about</a>
         <a href="/contact">contact</a>
         <a href="/todo">todo</a>
-        <div class="float-end">
-            <a class="btn" href="/register">register</a>
+        @guest
+        <div class="float-end ">
+            <a class="btn btn-primary" href="/register">register</a>
+            <a class="btn btn-secondary" href="/login">login</a>
         </div>
+        @endguest
+
+        @auth
+        <div class="float-end ">
+            <form action="/logout" method="POST" class="inline">
+                @csrf
+                <button type="submit" class="btn btn-secondary">logout</button>
+            </form>
+        </div>
+        @endauth
+
     </nav>
 
     <main>

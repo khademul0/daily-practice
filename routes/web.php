@@ -7,8 +7,10 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\InfoController;
+use App\Http\Controllers\loginController;
 use App\Http\Controllers\RegisterController;
 use GuzzleHttp\Promise\Create;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +22,27 @@ use GuzzleHttp\Promise\Create;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
+Route::middleware('guest')->group(function(){
+    Route::get('/', function () {
     return view('home');
+
+});
+
+Route::get('/register',[RegisterController::class,'create']);
+Route::post('/register',[RegisterController::class,'store']);
+
+
+Route::get('/login',[loginController::class,'index']);
+Route::post('/login',[loginController::class,'store']);
+
+});
+
+Route::middleware('auth')->group(function(){
+
+
+
+Route::get('/index', function () {
+    return view('index');
 
 });
 
@@ -69,5 +89,7 @@ Route::view('/contact', 'contact');
 //todayes practice CURD oparations shortway
 Route::resource('/infos', InfoController::class);
 
-Route::get('/register',[RegisterController::class,'create']);
-Route::post('/register',[RegisterController::class,'store']);
+
+
+Route::post('/logout',[loginController::class,'destroy']);
+});

@@ -51,7 +51,7 @@ class RegisterController extends Controller
 
        //and redirect the user to the home
 
-       return redirect('/');//it hase to be the same name as route//
+       return redirect('/index');//it hase to be the same name as route//
     }
 
     /**
